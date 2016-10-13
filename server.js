@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("./"));
 
-http.createServer(app).listen(3010);
+http.createServer(app).listen(3000);
 
 // create application/x-www-form-urlencoded parser 
 
@@ -22,7 +22,7 @@ app.get('/',function(req,res){
 
 });
 
-app.get('/add',function(req,res){
+app.get('/max',function(req,res){
 	res.sendFile(__dirname+"/views/index.html");
 
 });
@@ -34,11 +34,14 @@ app.get('/anyeven',function(req,res){
 	res.sendFile(__dirname+"/views/index.html");
 
 });
-app.get('/',function(req,res){
+app.get('/avg',function(req,res){
 	res.sendFile(__dirname+"/views/index.html");
 
 });
+app.get('/alleven',function(req,res){
+  res.sendFile(__dirname+"/views/index.html");
 
+});
 
 app.post("/sum",function(req,res){
 
@@ -112,7 +115,7 @@ app.post("/normore",function(req,res){
     var array = string.split(" ");  
     var result=arrayNContains(array,str2,n); 
     console.log( result );
-    res.send("if there is word show"+ n +" or more:"+ result);
+    res.send("if there is word show "+ n +" times or more:"+ result);
 });
 
 
