@@ -1,59 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>this is my index</title>
+    <meta charset="UTF-8">
+    <link href="/views/semantic/dist/semantic.min.css" rel="stylesheet" type=
+    "text/css">
+    <link href="/views/style.css" rel="stylesheet" type="text/css">
+    <title>Array Practice</title>
 </head>
 <body>
-	<h1>hello</h1>
-	<p>sum:<p>
-	<form action="/sum", method="POST">
-		<p>Input numbers:<input class="array" id="input" type="text" name="numbers"></p>
-		<p>*please separate by space</p>
-		<p class="function"></p>
-		<p class="result"></p>
-	<button class="sum" >submit</button>
-	</form>
-
-	<p>average:<p>
-	<form action="/avg", method="POST">
-		<p>Input numbers:<input class="array" id="input" type="text" name="numbers"></p>
-		<p>*please separate by space</p>
-		<p class="function"></p>
-		<p class="result"></p>
-	<button class="avg" >submit</button>
-	</form>
-
-	<p>max:<p>
-	<form action="/max", method="POST">
-		<p>Input numbers:<input class="array" id="input" type="text" name="numbers"></p>
-		<p>*please separate by space</p>
-		<p class="function"></p>
-		<p class="result"></p>
-	<button class="max" >submit</button>
-	</form>
-	
-	<p>any even:<p>
-	<form action="/anyeven", method="POST">
-		<p>Input numbers:<input class="array" id="input" type="text" name="numbers"></p>
-		<p>*please separate by space</p>
-		<p class="function"></p>
-		<p class="result"></p>
-	<button class="anyEven" >submit</button>
-	</form>
-
-	<p>all even:<p>
-	<form action="/alleven", method="POST">
-		<p>Input numbers:<input class="array" id="input" type="text" name="numbers"></p>
-		<p>*please separate by space</p>
-		<p class="function"></p>
-		<p class="result"></p>
-	<button class="allEven" >submit</button>
-	</form>
-
-	
-	<p>Input numbers:<input class="array" id="input1" type="text" name="numbers"></p>
-
-    <p class="result"></p>
-    <button class = "sb">cnmxc</button>  
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="/views/javascripts/app.js"></script>
+    <div class="ui teal message">
+        <p></p>
+        <h1>Array Practice</h1>
+    </div>
+    <div class="ui container certer">
+        <div class="ui aligned left">
+            <p></p>
+            <h1>Ex1-5</h1>
+            <p>input numbers:</p>
+            <form id="inputForm" method="post" name="inputForm">
+                <p>Input numbers:</p><input class="numbers" id="nums" name=
+                "nums" type="text">
+                <p>*please separate by space</p>
+                <p class="function"></p>
+                <p class="result"></p>
+                <p><button id="btn1" type="submit" value=
+                "average">average</button> | <button id="btn2" type="submit"
+                value="max">max</button> | <button id="btn3" type="submit"
+                value="sum">sum</button></p>
+                <p><button id="btn4" type="submit" value="anyeven">any
+                even</button> &nbsp;&nbsp;| <button id="btn5" type="submit" value=
+                "alleven">all even</button></p>
+                <p></p>
+                <p></p>
+            </form>
+            <div class="result1">
+                <p id="output">result:</p>
+            </div>
+        </div>
+        <p></p>
+        <div class="ui aligned left">
+            <p></p>
+            <h1>Ex6</h1>
+            <form id="inputForm2" method="post" name="inputForm2">
+                <p>Input numbers: <input class="str" id="str" name="str" type=
+                "text"> contains: <input class="str2" id="str2" name="str2"
+                type="text"></p>
+                <p>*please separate by space</p>
+                <p><button id="btn6" type="submit">2 or
+                more</button></p><input class="n" id="n" name="n" type="text">
+                <button id="btn7" type="submit">n or more</button>
+            </form>
+            <div class="result">
+                <p id="output2">result:</p>
+            </div>
+        </div>
+    </div>
+    <footer class="ui segment inverted">
+        <p class="left">
+            Copyright &copy; YZ 2016 &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/TinaYTZ/URLshortener/blob/master/URLShortner/web/WEB-INF/jsp/view/userprofile.jsp">Github_TinaYTZ</a>
+        </p>
+    </footer>
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js">
+    </script> 
+    <script src="/views/javascripts/app.js">
+    </script>
 </body>
+</html>
