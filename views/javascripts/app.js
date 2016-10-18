@@ -15,7 +15,7 @@ var main = function () {
             success: function(data) {
                 // Get result data
                 console.log('Result' + data);
-                $(obj).text(data);
+                $(obj).text(data.function+data.value);
             },
             error: function (result) {
                 console.log('ajax error ' + result.status);
@@ -25,25 +25,33 @@ var main = function () {
 
       // Manually handle submission
     $('form #btn1').click(function(e) {
-        e.preventDefault();        
-        var json = {'numbers':$('.numbers').val()};
+        e.preventDefault();
+        var str = $('.numbers').val();    
+        var nums =str.split(' ').map(Number);
+        var json = {'numbers':nums};
         handlePOST('/avg', '#output', json);
        });
        
         $('form #btn2').click(function(e) {
         e.preventDefault();        
-        var json = {'numbers':$('.numbers').val()};
+        var str = $('.numbers').val();    
+        var nums =str.split(' ').map(Number); 
+        var json = {'numbers':nums};
         handlePOST('/max', '#output', json);
         });
 
         $('form #btn3').click(function(e) {
         e.preventDefault();
-        var json = {'numbers':$('.numbers').val()};
+        var str = $('.numbers').val();    
+        var nums =str.split(' ').map(Number);       
+        var json = {'numbers':nums};
         handlePOST('/sum', '#output', json);
         });
         $('form #btn4').click(function(e) {
         e.preventDefault();
-        var json = {'numbers':$('.numbers').val()};
+        var str = $('.numbers').val();    
+        var nums =str.split(' ').map(Number);      
+        var json = {'numbers':nums};
         handlePOST('/anyeven', '#output', json);
  });
       
@@ -52,7 +60,8 @@ var main = function () {
         
         // Stop page from reloading
         e.preventDefault();
-        var json = {'numbers':$('.numbers').val()};
+        var nums = $('.numbers').val();        
+        var json = {'numbers':nums.split(' ').map(Number)};
         handlePOST('/alleven', '#output', json);
         }); 
 

@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 app.use(express.static('./'));
 
 http.createServer(app).listen(3000);
+console.log("listen on 3000");
 
 // create application/x-www-form-urlencoded parser 
 
@@ -25,26 +26,6 @@ app.get('/', function(req, res) {
 
 });
 
-app.get('/max', function(req, res) {
-    res.sendFile(__dirname + '/views/index.html');
-
-});
-app.get('/sum', function(req, res) {
-    res.sendFile(__dirname + '/views/index.html');
-
-});
-app.get('/anyeven', function(req, res) {
-    res.sendFile(__dirname + '/views/index.html');
-
-});
-app.get('/avg', function(req, res) {
-    res.sendFile(__dirname + '/views/index.html');
-
-});
-app.get('/alleven', function(req, res) {
-    res.sendFile(__dirname + '/views/index.html');
-
-});
 
 var sum = function(nums) {
 
@@ -121,57 +102,60 @@ var arrayNContains = function(strings, word, n) {
     }
     return nContains;
 };
-
+var convertStrToInt = function (arr) {
+    var i=0;
+    for (; i<arr.length; i++) {
+        arr[i] = parseInt(arr[i],10);
+    }
+    return arr;
+};
 
 app.post('/sum', function(req, res) {
-
     console.log(req.body);
-    var string = req.body.numbers;
-    var nums = string.split(' ').map(Number);
-    console.log('request', string, nums);
-
+    var nums  = convertStrToInt(req.body.numbers);
+    console.log('request', nums);
     var result = sum(nums);
     console.log(result);
-    res.send('sum:' + result);
+    res.json({function:'sum: ',
+               value:result});
 });
 
 app.post('/avg', function(req, res) {
-
     console.log(req.body);
-    var string = req.body.numbers;
-    var nums = string.split(' ').map(Number);
+    var nums  = convertStrToInt(req.body.numbers);
     var result = avg(nums);
     console.log(result);
-    res.send('average:' + result);
+    res.json({ function:'average: ', 
+                value:result});
 });
 
 
 app.post('/max', function(req, res) {
     console.log(req.body);
-    var string = req.body.numbers;
-    var nums = string.split(' ').map(Number);
+    var nums  = convertStrToInt(req.body.numbers);
     var result = max(nums);
     console.log(result);
-    res.send('Max number :' + result);
+    res.json({ function:'Max number: ', 
+                value:result});
 });
 
 app.post('/anyeven', function(req, res) {
 
     console.log(req.body);
-    var string = req.body.numbers;
-    var nums = string.split(' ').map(Number);
+    var nums  = convertStrToInt(req.body.numbers);
     var result = anyeven(nums);
     console.log(result);
-    res.send('if there is any even number:' + result);
+    res.json({function:'if there is any even number: ',
+             value:result});
 });
 
 app.post('/alleven', function(req, res) {
     console.log(req.body);
-    var string = req.body.numbers;
-    var nums = string.split(' ').map(Number);
-    var result = alleven(nums);
+    var nums  = convertStrToInt(req.body.numbers);
+        var result = alleven(nums);
     console.log(result);
-    res.send('if numbersare all even:' + result);
+    res.json({function:'if numbersare all even: ',
+              value:result});
 });
 
 
@@ -183,7 +167,8 @@ app.post('/twice', function(req, res) {
     var str2 = req.body.str2;
     var array = string.split(' ');
     var result = array2Contains(array, str2);
-    res.send('if there is word show 2 or more:' + result);
+    res.json({function:'if there is word show 2 or more: ',
+              value:result});
 });
 
 
@@ -195,7 +180,9 @@ app.post('/normore', function(req, res) {
     var array = string.split(' ');
     var result = arrayNContains(array, str2, n);
     console.log(result);
-    res.send('if there is word show ' + n + ' times or more:' + result);
+    var funcstr = 'if there is word show ' + n + ' times or more: ';
+    res.json({function:funcstr,
+              value:result});
 });
 
 
